@@ -43,8 +43,7 @@ const features = computed(() => {
 
     <div class="hero-features">
       <div v-for="feature in features" :key="feature.title" class="feature-card">
-        <Icon icon="mdi-light:home" />
-        <div class="feature-icon">{{ feature.icon }}</div>
+        <span class="feature-icon">{{ feature.icon }}</span>
         <h3>{{ feature.title }}</h3>
         <p>{{ feature.description }}</p>
       </div>

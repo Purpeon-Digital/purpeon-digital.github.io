@@ -3,7 +3,16 @@ import vue from '@astrojs/vue';
 
 export default defineConfig({
   output: 'static',
-  integrations: [vue()],
+  integrations: [
+    vue({
+      template: {
+        compilerOptions: {
+          // Treat iconify web component as custom element to avoid Vue resolution warnings
+          isCustomElement: (tag) => tag === 'iconify-icon'
+        }
+      }
+    })
+  ],
   site: 'https://purpeon.com',
   i18n: {
     defaultLocale: 'no',
