@@ -44,7 +44,7 @@ const features = computed(() => {
     <div class="hero-features">
       <div v-for="feature in features" :key="feature.title" class="feature-card">
         <span class="feature-icon">{{ feature.icon }}</span>
-        <h3>{{ feature.title }}</h3>
+        <h2>{{ feature.title }}</h2>
         <p>{{ feature.description }}</p>
       </div>
     </div>

@@ -26,7 +26,7 @@ const contactMethods = computed(() => {
   <section id="contact" class="contact-section">
     <div class="contact-content">
       <div class="contact-image">
-        <img src="/power.jpg" alt="Photo by https://unsplash.com/@hiepng?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText Hiep Nguyen on https://unsplash.com/photos/silhouette-photography-of-tower-16xJbmtpO6o?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText Unsplash" />
+        <img src="/power.jpg" height="720px" width="480px" alt="Photo by https://unsplash.com/@hiepng?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText Hiep Nguyen on https://unsplash.com/photos/silhouette-photography-of-tower-16xJbmtpO6o?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText Unsplash" />
       </div>
       <div class="contact-text">
         <h2>{{ t('contact.title') }}</h2>

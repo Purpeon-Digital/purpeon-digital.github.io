@@ -550,7 +550,7 @@ nav {
     border-color: rgba(107, 70, 193, 0.4);
 }
 
-[data-theme="light"] .feature-card h3,
+[data-theme="light"] .feature-card h2,
 [data-theme="light"] .feature-card p {
     color: #2d2d2d;
 }
@@ -703,7 +703,7 @@ nav {
     margin-bottom: 1rem;
 }
 
-.feature-card h3 {
+.feature-card h2 {
     font-size: 1.2rem;
     margin-bottom: 0.75rem;
     color: var(--hero-text-color);
