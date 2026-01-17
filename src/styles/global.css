@@ -460,7 +460,7 @@ nav {
     padding: 6rem 2rem 3rem;
     position: relative;
     overflow: hidden;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -640,7 +640,7 @@ nav {
 .hero-image {
     position: relative;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
 }
 
 .hero-image img {
@@ -749,7 +749,7 @@ nav {
     padding: 6rem 2rem;
     position: relative;
     overflow: hidden;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -899,7 +899,7 @@ nav {
     padding: 6rem 2rem;
     position: relative;
     overflow: hidden;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1104,7 +1104,7 @@ nav {
     padding: 6rem 2rem;
     position: relative;
     overflow: hidden;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
