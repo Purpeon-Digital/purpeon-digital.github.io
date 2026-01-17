@@ -5,33 +5,33 @@
     "contact": "Kontakt Oss"
   },
   "hero": {
-    "title": "Heilskaplege løysingar og lokal forankring",
+    "title": "Heilskaplege løysingar med lokal forankring",
     "subtitle": "Løysingar og rådgjeving for programvareutvikling, infrastruktur og elektronikk.",
-    "tagline": "Skalerbare løysingar tilpassa dine behov.",
+    "tagline": "Løysingar som skalerer, tilpassa behova dine.",
     "cta": {
       "services": "Våre Tenester",
       "sales": "Kontakt oss"
     },
     "features": [
       {
-        "icon": "📦",
+        "icon": "⚡",
         "title": "Lynrask",
-        "description": "Optimalisert ytelse med banebrytande teknologi for å akselerere din digitale transformasjonsreise."
+        "description": "Optimalisert yting med moderne teknologi som set fart på den digitale omstillinga di."
       },
       {
-        "icon": "🎯",
-        "title": "Uovertruffen erfaring",
-        "description": "24/7 støtte frå erfarne ingeniørar, støtta av vår 99,99% oppetidsgaranti."
+        "icon": "🔧",
+        "title": "Driftstryggleik og kompetanse",
+        "description": "Støtte frå erfarne ingeniørar med garantert respons neste arbeidsdag."
       },
       {
         "icon": "🔒",
-        "title": "Dine data, dine reglar",
-        "description": "Beskytta av bransjereglar og beste praksis. Tryggleik og etterleving prioritert."
+        "title": "Trygg databehandling på europeisk sky",
+        "description": "Vi har solid GDPR-kompetanse og nyttar primært europeiske skytenester. Trygg databehandling, i tråd med regelverket, som standard."
       },
       {
-        "icon": "💎",
-        "title": "Ingen løynde kostnadar",
-        "description": "Transparent prising kvar månad. Fast, tydeleg prising utan overraskingar."
+        "icon": "📌",
+        "title": "Rett innsats på rett stad",
+        "description": "Vi brukar tida på det som gir verdi: analyse, utvikling og løysing. Prisinga blir tilpassa behov og omfang."
       }
     ]
   },
