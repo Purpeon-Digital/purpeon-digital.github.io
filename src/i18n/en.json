@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "services": "Our Services",
+    "about": "About Us",
+    "contact": "Contact Us"
+  },
+  "hero": {
+    "title": "Comprehensive Solutions and Local Expertise",
+    "subtitle": "Solutions and consultancy for software development, infrastructure and electronics.",
+    "tagline": "Scalable solutions tailored to your needs.",
+    "cta": {
+      "services": "Our Services",
+      "sales": "Contact Us"
+    },
+    "features": [
+      {
+        "icon": "📦",
+        "title": "Lightning Fast",
+        "description": "Optimised performance with groundbreaking technology to accelerate your digital transformation journey."
+      },
+      {
+        "icon": "🎯",
+        "title": "Unmatched Experience",
+        "description": "24/7 support from experienced engineers, backed by our 99.99% uptime guarantee."
+      },
+      {
+        "icon": "🔒",
+        "title": "Your Data, Your Rules",
+        "description": "Protected by industry regulations and best practice. Security and compliance prioritised."
+      },
+      {
+        "icon": "💎",
+        "title": "No Hidden Costs",
+        "description": "Transparent pricing every month. Fixed, clear pricing without surprises."
+      }
+    ]
+  },
+  "services": {
+    "title": "Our Services",
+    "intro": "We offer comprehensive IT and hardware consultancy services tailored to your business needs. Our expertise lies in holistic software solutions, project management, and electronics.",
+    "description": "We have extensive experience with small and large software solutions, from dozens to millions of users. Additionally, we have experience with electronics solutions, from specification and certification to implementation and design.",
+    "items": [
+      {
+        "icon": "☁️",
+        "title": "Cloud Solutions",
+        "description": "Scalable infrastructure and migration expertise"
+      },
+      {
+        "icon": "🤖",
+        "title": "AI",
+        "description": "Extensive experience with artificial intelligence"
+      },
+      {
+        "icon": "⚙️",
+        "title": "Comprehensive Solutions",
+        "description": "Expertise in software, infrastructure, electronics and consultancy"
+      },
+      {
+        "icon": "📊",
+        "title": "Consultancy",
+        "description": "Software, hardware and IT architecture design"
+      }
+    ]
+  },
+  "about": {
+    "title": "About Us",
+    "lead": "Purpeon Digital is an innovative consultancy firm, and our consultants have many years of experience helping businesses navigate the complexity of modern technology.",
+    "description1": "Extensive experience from various industries, both public and private sector, gives us unique insight into the challenges businesses face today.",
+    "description2": "With expertise spanning both IT and hardware, we are in a unique position to offer comprehensive technology solutions.",
+    "description3": "The name Purpeon Digital comes from the flower foxglove (Digitalis purpurea), which was also the county flower of Sogn og Fjordane, thus reflecting our local connection and identity.",
+    "values": [
+      {
+        "icon": "🤝",
+        "title": "Partnership",
+        "description": "We build lasting relationships based on trust and mutual success."
+      },
+      {
+        "icon": "🎯",
+        "title": "Excellence",
+        "description": "Every project receives our full commitment to quality and precision."
+      },
+      {
+        "icon": "💡",
+        "title": "Innovation",
+        "description": "We stay ahead of technology trends to deliver groundbreaking solutions."
+      },
+      {
+        "icon": "🔍",
+        "title": "Transparency",
+        "description": "Clear communication and honest advice at every step."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact Us",
+    "lead": "Ready to transform your business with technology? Get in touch with our team today.",
+    "description": "We are here to answer your questions and provide expert guidance on your IT initiatives. Whether you need a consultation, have a specific project in mind, or simply want to learn more about our services, we would love to hear from you.",
+    "methods": [
+      {
+        "icon": "📧",
+        "label": "Email",
+        "value": "support@purpeondigital.com",
+        "href": "mailto:support@purpeondigital.com"
+      },
+      {
+        "icon": "📞",
+        "label": "Phone",
+        "value": "+47 959 92 555",
+        "href": "tel:+4795992555"
+      },
+      {
+        "icon": "📍",
+        "label": "Location",
+        "value": "Førde, Norway"
+      }
+    ],
+    "cta": {
+      "call": "Call Us",
+      "message": "Send Message"
+    }
+  },
+  "language": {
+    "select": "Language",
+    "en": "English",
+    "no": "Norwegian"
+  }
+}

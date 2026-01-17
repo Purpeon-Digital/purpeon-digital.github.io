@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "services": "Våre Tenester",
+    "about": "Om oss",
+    "contact": "Kontakt Oss"
+  },
+  "hero": {
+    "title": "Heilskaplege løysingar og lokal forankring",
+    "subtitle": "Løysingar og rådgjeving for programvareutvikling, infrastruktur og elektronikk.",
+    "tagline": "Skalerbare løysingar tilpassa dine behov.",
+    "cta": {
+      "services": "Våre Tenester",
+      "sales": "Kontakt oss"
+    },
+    "features": [
+      {
+        "icon": "📦",
+        "title": "Lynrask",
+        "description": "Optimalisert ytelse med banebrytande teknologi for å akselerere din digitale transformasjonsreise."
+      },
+      {
+        "icon": "🎯",
+        "title": "Uovertruffen erfaring",
+        "description": "24/7 støtte frå erfarne ingeniørar, støtta av vår 99,99% oppetidsgaranti."
+      },
+      {
+        "icon": "🔒",
+        "title": "Dine data, dine reglar",
+        "description": "Beskytta av bransjereglar og beste praksis. Tryggleik og etterleving prioritert."
+      },
+      {
+        "icon": "💎",
+        "title": "Ingen løynde kostnadar",
+        "description": "Transparent prising kvar månad. Fast, tydeleg prising utan overraskingar."
+      }
+    ]
+  },
+  "services": {
+    "title": "Våre tenester",
+    "intro": "Vi tilbyr omfattande IT- og HW-konsulenttenester tilpassa dine forretningsbehov. Vår ekspertise er heilskaplege programvareløysingar, prosjektleiing og elektronikk.",
+    "description": "Vi har lang erfaring med små og store programvareløysingar, frå titals til millionar av brukarar. I tillegg har vi erfaring med elektronikkløysingar, frå spesifikasjon og sertifisering til implementering og design.",
+    "items": [
+      {
+        "icon": "☁️",
+        "title": "Skyløysingar",
+        "description": "Skalerbar infrastruktur og migreringsekspertise"
+      },
+      {
+        "icon": "🤖",
+        "title": "KI",
+        "description": "Lang erfaring med kunstig intelligens"
+      },
+      {
+        "icon": "⚙️",
+        "title": "Heilskaplege løysingar",
+        "description": "Ekspertise innan både programvare, infrastruktur, elektronikk og rådgjeving"
+      },
+      {
+        "icon": "📊",
+        "title": "Rådgjeving",
+        "description": "Programvare, hardware og IT-arkitekturdesign"
+      }
+    ]
+  },
+  "about": {
+    "title": "Om oss",
+    "lead": "Purpeon Digital er eit nytenkande konsulentselskap, og våre konsulentar har mange års erfaring med å hjelpe bedrifter med å navigere i kompleksiteten i moderne teknologi.",
+    "description1": "Lang erfaring frå ulike bransjar, både offentleg og privat sektor, gjev oss ei unik innsikt i utfordringane bedrifter står overfor i dag.",
+    "description2": "Med ekspertise som spenn over både IT og hardware, står vi i ei unik stilling til å tilby heilskaplege teknologiløysingar.",
+    "description3": "Namnet Purpeon Digital kjem frå blomsten revebjelle (Digitalis purpurea), som også var fylkesblomsten i Sogn og Fjordane, og spegler dermed vår lokale tilknyting og identitet.",
+    "values": [
+      {
+        "icon": "🤝",
+        "title": "Partnarskap",
+        "description": "Vi byggjer varige relasjonar basert på tillit og gjensidig suksess."
+      },
+      {
+        "icon": "🎯",
+        "title": "Fortreffelighet",
+        "description": "Kvart prosjekt får vår fulle forplikting til kvalitet og presisjon."
+      },
+      {
+        "icon": "💡",
+        "title": "Innovasjon",
+        "description": "Vi held oss føre teknologitrendar for å levere banebrytande løysingar."
+      },
+      {
+        "icon": "🔍",
+        "title": "Openheit",
+        "description": "Klar kommunikasjon og ærlige råd ved kvart steg."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Kontakt oss",
+    "lead": "Klar til å transformere bedrifta di med teknologi? Ta kontakt med teamet vårt i dag.",
+    "description": "Vi er her for å svare på spørsmåla dine og gi ekspertveiledning om dine IT-initiativ. Anten du treng ein konsultasjon, har eit spesifikt prosjekt i tankane, eller berre vil lære meir om tenestene våre, vil vi gjerne høyre frå deg.",
+    "methods": [
+      {
+        "icon": "📧",
+        "label": "E-post",
+        "value": "support@purpeondigital.com",
+        "href": "mailto:support@purpeondigital.com"
+      },
+      {
+        "icon": "📞",
+        "label": "Telefon",
+        "value": "+47 959 92 555",
+        "href": "tel:+4795992555"
+      },
+      {
+        "icon": "📍",
+        "label": "Stad",
+        "value": "Førde, Norge"
+      }
+    ],
+    "cta": {
+      "call": "Ring oss",
+      "message": "Send melding"
+    }
+  },
+  "language": {
+    "select": "Språk",
+    "en": "Engelsk",
+    "no": "Norsk"
+  }
+}

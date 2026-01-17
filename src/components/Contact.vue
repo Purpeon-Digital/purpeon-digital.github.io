@@ -1,0 +1,55 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useI18n } from '@/composables/useI18n';
+
+interface ContactMethod {
+  icon: string;
+  label: string;
+  value: string;
+  href?: string;
+}
+
+const { t, locale } = useI18n();
+
+const contactMethods = computed(() => {
+  // Track locale for reactivity
+  const _ = locale.value;
+  return t('contact.methods');
+});
+</script>
+
+<template>
+  <section id="contact" class="contact-section">
+    <div class="contact-content">
+      <div class="contact-image">
+        <img src="/power.jpg" alt="Photo by https://unsplash.com/@hiepng?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText Hiep Nguyen on https://unsplash.com/photos/silhouette-photography-of-tower-16xJbmtpO6o?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText Unsplash" />
+      </div>
+      <div class="contact-text">
+        <h2>{{ t('contact.title') }}</h2>
+        <p class="lead">{{ t('contact.lead') }}</p>
+        <p>{{ t('contact.description') }}</p>
+        
+        <div class="contact-methods">
+          <a 
+            v-for="method in contactMethods" 
+            :key="method.label"
+            :href="method.href"
+            class="contact-card"
+            :class="{ 'no-link': !method.href }"
+          >
+            <span class="contact-icon">{{ method.icon }}</span>
+            <div>
+              <h4>{{ method.label }}</h4>
+              <p>{{ method.value }}</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="contact-cta">
+          <button class="btn-primary">{{ t('contact.cta.call') }}</button>
+          <button class="btn-secondary">{{ t('contact.cta.message') }}</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
