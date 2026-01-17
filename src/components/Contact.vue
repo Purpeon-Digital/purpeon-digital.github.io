@@ -1,25 +1,12 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { useI18n, type Locale } from '@/composables/useI18n';
-
-interface ContactMethod {
-  icon: string;
-  label: string;
-  value: string;
-  href?: string;
-}
+import ContactMethods from './ContactMethods.vue';
 
 const props = defineProps<{
   locale: Locale;
 }>();
 
-const { t, locale } = useI18n(props.locale);
-
-const contactMethods = computed(() => {
-  // Track locale for reactivity
-  const _ = locale.value;
-  return t('contact.methods');
-});
+const { t } = useI18n(props.locale);
 </script>
 
 <template>
@@ -33,21 +20,7 @@ const contactMethods = computed(() => {
         <p class="lead">{{ t('contact.lead') }}</p>
         <p>{{ t('contact.description') }}</p>
         
-        <div class="contact-methods">
-          <a 
-            v-for="method in contactMethods" 
-            :key="method.label"
-            :href="method.href"
-            class="contact-card"
-            :class="{ 'no-link': !method.href }"
-          >
-            <span class="contact-icon"><iconify-icon :icon="method.icon" width="24" height="24" style="color: #C7719E"></iconify-icon></span>
-            <div>
-              <h3>{{ method.label }}</h3>
-              <p>{{ method.value }}</p>
-            </div>
-          </a>
-        </div>
+        <ContactMethods :locale="locale" />
       </div>
     </div>
   </section>
