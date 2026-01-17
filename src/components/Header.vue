@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { useI18n } from '@/composables/useI18n';
+import { useI18n, type Locale } from '@/composables/useI18n';
 import LanguagePicker from './LanguagePicker.vue';
 
-const { t, initLocale } = useI18n();
+const props = defineProps<{
+  locale: Locale;
+}>();
+
+const { t } = useI18n();
 const currentTheme = ref('light');
 const mobileMenuOpen = ref(false);
 
@@ -44,7 +48,6 @@ function scrollToSection(e: Event, href: string) {
 }
 
 onMounted(() => {
-  initLocale();
   const savedTheme = localStorage.getItem('theme') || 'light';
   currentTheme.value = savedTheme;
   document.documentElement.setAttribute('data-theme', savedTheme);
@@ -72,7 +75,7 @@ onMounted(() => {
           <li><a href="#contact" @click="(e) => scrollToSection(e, '#contact')">{{ t('nav.contact') }}</a></li>
         </ul>
         <div class="nav-controls">
-          <LanguagePicker />
+          <LanguagePicker :locale="props.locale" />
           <button class="theme-toggle" @click="toggleTheme" :aria-label="`Switch to ${currentTheme === 'dark' ? 'light' : 'dark'} mode`">
             <span class="theme-option" :class="{ active: currentTheme === 'light' }">☀️</span>
             <span class="theme-option" :class="{ active: currentTheme === 'dark' }">🌙</span>

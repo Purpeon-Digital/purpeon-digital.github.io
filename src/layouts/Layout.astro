@@ -4,16 +4,18 @@ import '@/styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  locale: 'en' | 'no';
 }
 
 const { 
   title = 'Purpeon Digital - IT Consulting',
-  description = 'Purpeon Digital - Professional IT consulting services for your business'
+  description = 'Purpeon Digital - Professional IT consulting services for your business',
+  locale
 } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,6 +25,19 @@ const {
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
     <link rel="manifest" href="/favicon/site.webmanifest">
     <title>{title}</title>
+    <script is:inline define:vars={{ locale }}>
+      // Set initial locale from SSR - must happen before any component loads
+      window.__INITIAL_LOCALE__ = locale;
+      
+      // Save the locale to localStorage if viewing a language page
+      // but don't redirect to avoid flicker
+      if (typeof localStorage !== 'undefined') {
+        const savedLocale = localStorage.getItem('locale');
+        if (!savedLocale || (savedLocale !== locale)) {
+          localStorage.setItem('locale', locale);
+        }
+      }
+    </script>
   </head>
   <body>
     <slot />

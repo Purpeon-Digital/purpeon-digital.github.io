@@ -10,7 +10,7 @@ Astro 5 website with Vue 3 components for Purpeon Digital IT consulting.
 
 - **Framework**: Astro 5
 - **UI Components**: Vue 3 with `<script setup>` and TypeScript
-- **Package Manager**: Bun
+- **Package Manager**: Bun - always use bun commands!
 - **Styling**: Global CSS with CSS custom properties (variables)
 - **Theme**: Light/dark mode via `data-theme` attribute on `<html>`
 
@@ -36,7 +36,7 @@ Astro 5 website with Vue 3 components for Purpeon Digital IT consulting.
 
 ```bash
 bun dev      # Development server
-bun build    # Production build
+bun run build    # Production build
 bun preview  # Preview production build
 ```
 

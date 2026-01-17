@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import en from '@/i18n/en.json';
 import no from '@/i18n/no.json';
 
@@ -6,8 +6,30 @@ export type Locale = 'en' | 'no';
 
 const translations = { en, no } as const;
 
+// Get current locale from DOM (source of truth)
+const getCurrentLocale = (): Locale => {
+  // First check window.__INITIAL_LOCALE__ set by SSR
+  if (typeof window !== 'undefined' && (window as any).__INITIAL_LOCALE__) {
+    return (window as any).__INITIAL_LOCALE__ as Locale;
+  }
+  // Fallback to reading from HTML lang attribute
+  if (typeof document !== 'undefined') {
+    const htmlLang = document.documentElement.getAttribute('lang');
+    if (htmlLang === 'en' || htmlLang === 'no') {
+      return htmlLang;
+    }
+  }
+  return 'no';
+};
+
 // Global reactive state - shared across all components
-const currentLocale = ref<Locale>('en');
+// Initialize with 'no' for SSR, will be synced on client
+const currentLocale = ref<Locale>('no');
+
+// Immediately sync on client-side module load
+if (typeof window !== 'undefined') {
+  currentLocale.value = getCurrentLocale();
+}
 
 type TranslationSchema = typeof en;
 
@@ -33,24 +55,35 @@ function getNestedValue(obj: any, path: string): any {
 }
 
 export function useI18n() {
-  const initLocale = () => {
-    if (typeof localStorage !== 'undefined') {
-      const saved = localStorage.getItem('locale') as Locale | null;
-      if (saved && (saved === 'en' || saved === 'no')) {
-        currentLocale.value = saved;
-      } else {
-        currentLocale.value = detectBrowserLanguage();
-      }
-      document.documentElement.setAttribute('lang', currentLocale.value);
+  // Sync locale on every component mount to ensure it matches SSR
+  onMounted(() => {
+    const ssrLocale = getCurrentLocale();
+    if (currentLocale.value !== ssrLocale) {
+      currentLocale.value = ssrLocale;
     }
-  };
-
+  });
+  
   const setLocale = (locale: Locale) => {
     currentLocale.value = locale;
     if (typeof localStorage !== 'undefined') {
       localStorage.setItem('locale', locale);
     }
     document.documentElement.setAttribute('lang', locale);
+    
+    // Update __INITIAL_LOCALE__ for the new page
+    if (typeof window !== 'undefined') {
+      (window as any).__INITIAL_LOCALE__ = locale;
+    }
+    
+    // Redirect to the correct language path
+    const currentPath = window.location.pathname;
+    const newPath = locale === 'no' ? '/' : '/en/';
+    
+    if (locale === 'en' && !currentPath.startsWith('/en')) {
+      window.location.href = newPath;
+    } else if (locale === 'no' && currentPath.startsWith('/en')) {
+      window.location.href = newPath;
+    }
   };
 
   // Reactive translation function - returns computed for reactivity
@@ -68,7 +101,6 @@ export function useI18n() {
     locale,
     messages,
     t,
-    setLocale,
-    initLocale
+    setLocale
   };
 }

@@ -4,5 +4,12 @@ import vue from '@astrojs/vue';
 export default defineConfig({
   output: 'static',
   integrations: [vue()],
-  site: 'https://purpeon.no'
+  site: 'https://purpeon.com',
+  i18n: {
+    defaultLocale: 'no',
+    locales: ['en', 'no'],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  }
 });

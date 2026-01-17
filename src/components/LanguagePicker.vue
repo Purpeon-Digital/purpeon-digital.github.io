@@ -1,8 +1,12 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
 import { useI18n, type Locale } from '@/composables/useI18n';
 
-const { locale, setLocale } = useI18n();
+// Accept locale prop from SSR - this is the source of truth for display
+const props = defineProps<{
+  locale: Locale;
+}>();
+
+const { setLocale } = useI18n();
 
 const languages: { code: Locale; flag: string }[] = [
   { code: 'en', flag: '🇬🇧' },
@@ -10,7 +14,7 @@ const languages: { code: Locale; flag: string }[] = [
 ];
 
 function toggleLanguage() {
-  const newLocale: Locale = locale.value === 'en' ? 'no' : 'en';
+  const newLocale: Locale = props.locale === 'en' ? 'no' : 'en';
   setLocale(newLocale);
 }
 </script>
@@ -20,13 +24,13 @@ function toggleLanguage() {
     <button 
       class="language-toggle" 
       @click="toggleLanguage"
-      :aria-label="`Switch to ${locale === 'en' ? 'Norwegian' : 'English'}`"
+      :aria-label="`Switch to ${props.locale === 'en' ? 'Norwegian' : 'English'}`"
     >
       <span 
         v-for="lang in languages"
         :key="lang.code"
         class="language-option"
-        :class="{ active: locale === lang.code }"
+        :class="{ active: props.locale === lang.code }"
       >
         {{ lang.flag }}
       </span>
