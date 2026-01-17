@@ -488,6 +488,74 @@ nav {
     50% { transform: translate(10%, 10%) scale(1.1); }
 }
 
+/* Light mode hero */
+[data-theme="light"] .hero {
+    background:
+        repeating-linear-gradient(
+            120deg,
+            transparent 0px,
+            transparent 80px,
+            rgba(192, 132, 250, 0.1) 80px,
+            rgba(196, 139, 253, 0.12) 84px,
+            rgba(199, 146, 255, 0.1) 88px,
+            transparent 88px,
+            transparent 200px
+        ),
+        repeating-linear-gradient(
+            120deg,
+            transparent 0px,
+            transparent 140px,
+            rgba(168, 85, 247, 0.08) 140px,
+            rgba(168, 85, 247, 0.1) 143px,
+            transparent 143px,
+            transparent 280px
+        ),
+        linear-gradient(135deg, #f3e5ff 0%, #e8d5ff 100%);
+    color: #000000;
+}
+
+[data-theme="light"] .hero-text h1,
+[data-theme="light"] .hero-text p {
+    color: #000000;
+}
+
+[data-theme="light"] .btn-primary {
+    background: #6B46C1;
+    color: white;
+}
+
+[data-theme="light"] .btn-primary:hover {
+    background: #553C9A;
+}
+
+[data-theme="light"] .btn-secondary {
+    background: rgba(0, 0, 0, 0.08);
+    color: #2d2d2d;
+    border: 2px solid rgba(107, 70, 193, 0.3);
+}
+
+[data-theme="light"] .btn-secondary:hover {
+    background: rgba(107, 70, 193, 0.15);
+    border-color: rgba(107, 70, 193, 0.5);
+}
+
+[data-theme="light"] .feature-card {
+    background: rgba(107, 70, 193, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(107, 70, 193, 0.3);
+}
+
+[data-theme="light"] .feature-card:hover {
+    background: rgba(107, 70, 193, 0.25);
+    border-color: rgba(107, 70, 193, 0.4);
+}
+
+[data-theme="light"] .feature-card h3,
+[data-theme="light"] .feature-card p {
+    color: #2d2d2d;
+}
+
+
 .hero-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -586,6 +654,11 @@ nav {
     object-fit: cover;
 }
 
+[data-theme="light"] .hero-image img {
+    filter: brightness(1) contrast(1.15);
+    mix-blend-mode: normal;
+}
+
 .hero-badge {
     position: absolute;
     bottom: 2rem;
@@ -647,7 +720,7 @@ nav {
 .services-section {
     background:
         repeating-linear-gradient(
-            60deg,
+            30deg,
             transparent 0px,
             transparent 80px,
             var(--services-streak-1) 80px,
@@ -657,7 +730,7 @@ nav {
             transparent 200px
         ),
         repeating-linear-gradient(
-            60deg,
+            30deg,
             transparent 0px,
             transparent 140px,
             var(--services-streak-4) 140px,
@@ -933,6 +1006,11 @@ nav {
     object-fit: cover;
 }
 
+[data-theme="light"] .about-image img {
+    filter: brightness(1) contrast(1.2) saturate(1.1);
+    mix-blend-mode: normal;
+}
+
 .about-badge {
     position: absolute;
     bottom: 2rem;
@@ -1065,6 +1143,10 @@ nav {
     filter: brightness(0.9) contrast(1.1) hue-rotate(-10deg);
 }
 
+[data-theme="light"] .contact-image img {
+    filter: brightness(1) contrast(1.15) hue-rotate(-10deg);
+}
+
 .contact-badge {
     position: absolute;
     top: 2rem;
@@ -1188,6 +1270,129 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+[data-theme="light"] .contact-section {
+    background:
+        repeating-linear-gradient(
+            150deg,
+            transparent 0px,
+            transparent 90px,
+            rgba(192, 132, 250, 0.08) 90px,
+            rgba(196, 139, 253, 0.1) 94px,
+            rgba(199, 146, 255, 0.08) 98px,
+            transparent 98px,
+            transparent 220px
+        ),
+        repeating-linear-gradient(
+            150deg,
+            transparent 0px,
+            transparent 160px,
+            rgba(168, 85, 247, 0.06) 160px,
+            rgba(168, 85, 247, 0.08) 163px,
+            transparent 163px,
+            transparent 300px
+        ),
+        linear-gradient(
+            -30deg,
+            #f3e5ff 0%,
+            #ede9fe 40%,
+            #f5f3ff 70%,
+            #faf5ff 100%
+        );
+    color: #2d2d2d;
+}
+
+[data-theme="light"] .contact-text h2 {
+    color: #6B46C1;
+}
+
+[data-theme="light"] .contact-text p {
+    color: #2d2d2d;
+}
+
+[data-theme="light"] .contact-card {
+    background: rgba(107, 70, 193, 0.12);
+    border: 1px solid rgba(107, 70, 193, 0.25);
+}
+
+[data-theme="light"] .contact-card:not(.no-link):hover {
+    background: rgba(107, 70, 193, 0.2);
+    border-color: rgba(107, 70, 193, 0.4);
+}
+
+[data-theme="light"] .contact-card h4 {
+    color: #6B46C1;
+}
+
+[data-theme="light"] .contact-card p {
+    color: #2d2d2d;
+}
+
+[data-theme="light"] .contact-section .btn-primary {
+    background: #6B46C1;
+}
+
+[data-theme="light"] .contact-section .btn-primary:hover {
+    background: #553C9A;
+}
+
+[data-theme="light"] .about-section {
+    background:
+        repeating-linear-gradient(
+            -45deg,
+            transparent 0px,
+            transparent 100px,
+            rgba(192, 132, 250, 0.08) 100px,
+            rgba(196, 139, 253, 0.1) 104px,
+            rgba(199, 146, 255, 0.08) 108px,
+            transparent 108px,
+            transparent 250px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent 0px,
+            transparent 180px,
+            rgba(168, 85, 247, 0.06) 180px,
+            rgba(168, 85, 247, 0.08) 183px,
+            transparent 183px,
+            transparent 350px
+        ),
+        linear-gradient(
+            160deg,
+            #f5f3ff 0%,
+            #ede9fe 35%,
+            #faf5ff 65%,
+            #f3e5ff 100%
+        );
+    color: #2d2d2d;
+}
+
+[data-theme="light"] .about-text h2 {
+    color: #6B46C1;
+}
+
+[data-theme="light"] .about-text p {
+    color: #2d2d2d;
+}
+
+[data-theme="light"] .value-card {
+    background: rgba(107, 70, 193, 0.12);
+    border: 1px solid rgba(107, 70, 193, 0.25);
+}
+
+[data-theme="light"] .value-card:hover {
+    background: rgba(107, 70, 193, 0.2);
+    border-color: rgba(107, 70, 193, 0.4);
+    box-shadow: 0 8px 25px rgba(107, 70, 193, 0.15);
+}
+
+[data-theme="light"] .value-card h4 {
+    color: #6B46C1;
+}
+
+[data-theme="light"] .value-card p {
+    color: #2d2d2d;
 }
 
 .hero {
