@@ -1282,6 +1282,8 @@ iconify-icon {
     .hero-buttons {
         flex-direction: column;
         margin-bottom: 3rem;
+    }
+    
     .btn-primary, .btn-secondary {
         width: 100%;
     }

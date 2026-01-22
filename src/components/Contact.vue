@@ -58,6 +58,8 @@ const toggleMap = () => {
   max-width: 1400px;
   height: 100%;
   gap: 2rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .contact-content {
@@ -108,7 +110,7 @@ const toggleMap = () => {
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   scroll-snap-align: start;
   scroll-snap-stop: always;
