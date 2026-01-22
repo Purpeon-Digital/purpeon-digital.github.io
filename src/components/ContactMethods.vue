@@ -13,6 +13,10 @@ const props = defineProps<{
   locale: Locale;
 }>();
 
+const emit = defineEmits<{
+  'show-map': [];
+}>();
+
 const { t, locale } = useI18n(props.locale);
 
 const contactMethods = computed(() => {
@@ -20,16 +24,33 @@ const contactMethods = computed(() => {
   const _ = locale.value;
   return t('contact.methods') as ContactMethod[];
 });
+
+const handleLocationClick = () => {
+  emit('show-map');
+};
+
+const handleOrgNumberClick = (e: MouseEvent) => {
+  e.preventDefault();
+  window.open('https://virksomhet.brreg.no/nb/oppslag/enheter/836295722', '_blank');
+};
 </script>
 
 <template>
   <div class="contact-methods">
     <a 
-      v-for="method in contactMethods" 
+      v-for="(method, index) in contactMethods" 
       :key="method.label"
       :href="method.href"
       class="contact-card"
-      :class="{ 'no-link': !method.href }"
+      :class="{ 
+        'no-link': !method.href && method.label !== 'Stad' && method.label !== 'Address' && index !== contactMethods.length - 1,
+        'clickable': method.label === 'Stad' || method.label === 'Address' || index === contactMethods.length - 1
+      }"
+      @click="
+        method.label === 'Stad' || method.label === 'Address' ? handleLocationClick() :
+        index === contactMethods.length - 1 ? handleOrgNumberClick($event) :
+        null
+      "
     >
       <span class="contact-icon"><iconify-icon :icon="method.icon" width="24" height="24" style="color: #C7719E"></iconify-icon></span>
       <div>
@@ -65,6 +86,13 @@ const contactMethods = computed(() => {
     background: var(--contact-card-hover);
     transform: translateX(8px);
     border-color: rgba(244, 114, 182, 0.4);
+}
+
+.contact-card.clickable:hover {
+    background: var(--contact-card-hover);
+    transform: translateX(8px);
+    border-color: rgba(244, 114, 182, 0.4);
+    cursor: pointer;
 }
 
 .contact-card.no-link {
