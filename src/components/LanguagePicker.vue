@@ -8,11 +8,6 @@ const props = defineProps<{
 
 const { setLocale } = useI18n();
 
-const languages: { code: Locale; flag: string }[] = [
-  { code: 'en', flag: '🇬🇧' },
-  { code: 'no', flag: '🇳🇴' }
-];
-
 function toggleLanguage() {
   const newLocale: Locale = props.locale === 'en' ? 'no' : 'en';
   setLocale(newLocale);
@@ -21,18 +16,15 @@ function toggleLanguage() {
 
 <template>
   <div class="language-picker">
-    <button 
-      class="language-toggle" 
-      @click="toggleLanguage"
+    <button class="language-toggle" @click="toggleLanguage"
       :aria-label="`Switch to ${props.locale === 'en' ? 'Norwegian' : 'English'}`"
-    >
-      <span 
-        v-for="lang in languages"
-        :key="lang.code"
-        class="language-option"
-        :class="{ active: props.locale === lang.code }"
-      >
-        {{ lang.flag }}
+      :aria-pressed="props.locale === 'no'">
+      <span class="language-highlight" :class="{ 'is-no': props.locale === 'no' }" aria-hidden="true"></span>
+      <span class="language-option" :class="{ active: props.locale === 'no' }">
+        🇳🇴
+      </span>
+      <span class="language-option" :class="{ active: props.locale === 'en' }">
+        🇬🇧
       </span>
     </button>
   </div>
@@ -44,57 +36,69 @@ function toggleLanguage() {
 }
 
 .language-toggle {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  border: none;
   color: white;
   height: 38px;
-  padding: 3px;
+  padding: 2px;
   border-radius: 10px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
+  transition: background 0.2s ease;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   align-items: center;
-  gap: 2px;
   position: relative;
+  isolation: isolate;
 }
 
 .language-toggle:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.25);
-  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.language-highlight {
+  position: absolute;
+  inset: 2px;
+  width: calc(50% - 2px);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+  transform: translateX(0);
+  z-index: 0;
+}
+
+.language-highlight.is-no {
+  transform: translateX(100%);
 }
 
 .language-option {
-  font-size: 1.15rem;
-  padding: 4px 8px;
+  font-size: 1.05rem;
+  padding: 6px 8px;
   border-radius: 7px;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.4;
-  filter: grayscale(0.8);
-  transform: scale(0.9);
+  opacity: 0.5;
+  filter: grayscale(0.95);
+  transition: opacity 0.2s ease, filter 0.2s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .language-option.active {
-  background: rgba(255, 255, 255, 0.25);
   opacity: 1;
   filter: grayscale(0);
-  transform: scale(1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 @media (max-width: 768px) {
   .language-toggle {
     height: 34px;
-    border-radius: 8px;
+    border-radius: 10px;
   }
-  
+
   .language-option {
-    font-size: 1rem;
-    padding: 3px 7px;
-    border-radius: 6px;
+    font-size: 0.95rem;
+    padding: 5px 6px;
+    border-radius: 7px;
   }
 }
 </style>

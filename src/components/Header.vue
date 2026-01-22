@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import { useI18n, type Locale } from '@/composables/useI18n';
 import LanguagePicker from './LanguagePicker.vue';
-
-type Theme = 'light' | 'dark';
+import ThemeToggle from './ThemeToggle.vue';
 
 const props = defineProps<{
   locale: Locale;
@@ -11,42 +10,6 @@ const props = defineProps<{
 
 const { t } = useI18n(props.locale);
 const mobileMenuOpen = ref(false);
-const themeReady = ref(false);
-
-const initialTheme: Theme = (() => {
-  if (typeof window === 'undefined' || typeof document === 'undefined') return 'light';
-  const fromHead = (window as typeof window & { __INITIAL_THEME__?: Theme }).__INITIAL_THEME__;
-  const attrTheme = document.documentElement.getAttribute('data-theme') as Theme | null;
-  if (fromHead || attrTheme) return (fromHead || attrTheme) as Theme;
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-})();
-
-const theme = ref<Theme>(initialTheme);
-
-onMounted(() => {
-  const html = document.documentElement;
-  html.setAttribute('data-theme', theme.value);
-
-  try {
-    if (!localStorage.getItem('theme')) {
-      localStorage.setItem('theme', theme.value);
-    }
-  } catch (e) {}
-
-  themeReady.value = true;
-});
-
-function toggleTheme() {
-  const html = document.documentElement;
-  const currentTheme = html.getAttribute('data-theme') || 'light';
-  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-  html.setAttribute('data-theme', newTheme);
-  try {
-    localStorage.setItem('theme', newTheme);
-  } catch (e) {}
-  theme.value = newTheme;
-}
 
 function toggleMobileMenu() {
   mobileMenuOpen.value = !mobileMenuOpen.value;
@@ -109,28 +72,7 @@ function scrollToSection(e: Event, href: string) {
         </ul>
         <div class="nav-controls">
           <LanguagePicker :locale="props.locale" />
-          <button v-if="themeReady" class="theme-toggle" :class="{ 'theme-toggle--toggled': theme === 'dark' }" type="button"
-            title="Toggle theme" aria-label="Toggle theme" @click="toggleTheme" style="color: white;">
-            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="2rem" height="2rem" fill="currentColor"
-              stroke-linecap="round" class="theme-toggle__classic" viewBox="0 0 32 32">
-              <clipPath id="theme-toggle__classic__cutout">
-                <path d="M0-5h30a1 1 0 0 0 9 13v24H0Z" />
-              </clipPath>
-              <g clip-path="url(#theme-toggle__classic__cutout)">
-                <circle cx="16" cy="16" r="9.34" />
-                <g stroke="currentColor" stroke-width="1.5">
-                  <path d="M16 5.5v-4" />
-                  <path d="M16 30.5v-4" />
-                  <path d="M1.5 16h4" />
-                  <path d="M26.5 16h4" />
-                  <path d="m23.4 8.6 2.8-2.8" />
-                  <path d="m5.7 26.3 2.9-2.9" />
-                  <path d="m5.8 5.8 2.8 2.8" />
-                  <path d="m23.4 23.4 2.9 2.9" />
-                </g>
-              </g>
-            </svg>
-          </button>
+          <ThemeToggle />
         </div>
       </div>
     </nav>

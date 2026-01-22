@@ -24,7 +24,6 @@ const {
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
     <link rel="manifest" href="/favicon/site.webmanifest">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/classic.min.css">
     <title>{title}</title>
     <style>
       /* Anti-flicker: hide body until hydration completes */
@@ -52,6 +51,7 @@ const {
 
       window.__INITIAL_THEME__ = initialTheme;
       document.documentElement.setAttribute('data-theme', initialTheme);
+      document.documentElement.setAttribute('data-theme-resolved', 'false');
       
       // Save the locale to localStorage if viewing a language page
       // but don't redirect to avoid flicker
