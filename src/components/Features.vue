@@ -3,15 +3,17 @@ interface Feature {
   icon: string;
   title: string;
   description: string;
+  forceTwoLines?: boolean;
 }
 
 const props = defineProps<{
   features: Feature[];
+  forceTwoLines?: boolean
 }>();
 </script>
 
 <template>
-  <div class="hero-features">
+  <div class="features" :class="forceTwoLines ? 'features-force-two-lines' : ''">
     <div v-for="feature in props.features" :key="feature.title" class="feature-card">
       <div class="feature-header">
         <span class="feature-icon-wrapper">
@@ -26,7 +28,7 @@ const props = defineProps<{
 </template>
 
 <style scoped>
-.hero-features {
+.features {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
@@ -35,9 +37,13 @@ const props = defineProps<{
   margin-top: auto;
 }
 
+.features-force-two-lines {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 /* Tablet: 2x2 layout */
 @media (max-width: 1200px) {
-  .hero-features {
+  .features {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
   }
@@ -45,7 +51,7 @@ const props = defineProps<{
 
 /* Mobile: 1x4 layout */
 @media (max-width: 768px) {
-  .hero-features {
+  .features {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
@@ -53,25 +59,25 @@ const props = defineProps<{
 
 /* Small mobile: compact 1x4 layout */
 @media (max-width: 480px) {
-  .hero-features {
+  .features {
     grid-template-columns: 1fr;
     gap: 0.75rem;
   }
 }
 
 .feature-card {
-  background: var(--hero-feature-bg);
+  background: var(--feature-bg);
   backdrop-filter: blur(10px);
-  border: 1px solid var(--hero-feature-border);
+  border: 1px solid var(--feature-border);
   padding: 1.75rem;
   border-radius: 16px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .feature-card:hover {
-  background: var(--hero-feature-hover-bg);
+  background: var(--feature-hover-bg);
   transform: translateY(-5px);
-  border-color: var(--hero-feature-border);
+  border-color: var(--feature-border);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
 }
 
@@ -119,7 +125,7 @@ const props = defineProps<{
 .feature-card h2 {
   font-size: 1.2rem;
   margin: 0;
-  color: var(--hero-text-color);
+  color: var(--feature-text-color);
   font-weight: 600;
   line-height: 1.3;
 }
@@ -127,8 +133,8 @@ const props = defineProps<{
 .feature-card p {
   font-size: 0.95rem;
   line-height: 1.6;
-  opacity: var(--hero-text-opacity);
-  color: var(--hero-text-color);
+  opacity: var(--feature-text-opacity);
+  color: var(--feature-text-color);
 }
 
 /* Light theme overrides */

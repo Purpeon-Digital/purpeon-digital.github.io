@@ -50,9 +50,9 @@ html {
     --hero-streak-5: rgba(255, 120, 170, 0.2);
     --hero-text-color: #ffffff;
     --hero-text-opacity: 1;
-    --hero-feature-bg: rgba(255, 255, 255, 0.12);
-    --hero-feature-border: rgba(255, 255, 255, 0.2);
-    --hero-feature-hover-bg: rgba(255, 255, 255, 0.18);
+    --feature-bg: rgba(255, 255, 255, 0.12);
+    --feature-border: rgba(255, 255, 255, 0.2);
+    --feature-hover-bg: rgba(255, 255, 255, 0.18);
     --hero-badge-bg: rgba(0, 0, 0, 0.7);
     --hero-badge-border: rgba(255, 255, 255, 0.15);
     --services-grad-1: #f3e8ff;
@@ -135,9 +135,9 @@ html {
     --hero-streak-5: rgba(195, 176, 255, 0.15);
     --hero-text-color: #ffffff;
     --hero-text-opacity: 0.95;
-    --hero-feature-bg: rgba(157, 111, 255, 0.08);
-    --hero-feature-border: rgba(157, 111, 255, 0.15);
-    --hero-feature-hover-bg: rgba(157, 111, 255, 0.12);
+    --feature-bg: rgba(157, 111, 255, 0.08);
+    --feature-border: rgba(157, 111, 255, 0.15);
+    --feature-hover-bg: rgba(157, 111, 255, 0.12);
     --hero-badge-bg: rgba(10, 10, 20, 0.85);
     --hero-badge-border: rgba(157, 111, 255, 0.2);
     --services-grad-1: #1a0f2e;
@@ -581,48 +581,6 @@ main {
     margin-bottom: 1.5rem;
     color: var(--services-text-color);
     opacity: 0.9;
-}
-
-.services-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.service-item {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-    background: var(--services-item-bg);
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid var(--services-item-border);
-    transition: all 0.3s ease;
-}
-
-.service-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(107, 70, 193, 0.15);
-    background: var(--services-item-bg);
-    border-color: var(--accent-primary);
-}
-
-.service-icon {
-    font-size: 1.8rem;
-    flex-shrink: 0;
-}
-
-.service-item h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.3rem;
-    color: var(--services-heading-color);
-}
-
-.service-item p {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    margin: 0;
 }
 
 

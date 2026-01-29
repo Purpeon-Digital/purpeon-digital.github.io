@@ -47,7 +47,7 @@ function toggleTheme() {
         aria-label="Toggle theme" 
         @click="toggleTheme"
     >
-        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="2rem" height="2rem" fill="currentColor"
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1.5rem" height="1.5rem" fill="currentColor"
             stroke-linecap="round" class="theme-toggle__classic" viewBox="0 0 32 32">
             <clipPath id="theme-toggle__classic__cutout">
                 <path d="M0-5h30a1 1 0 0 0 9 13v24H0Z" />
@@ -76,6 +76,7 @@ function toggleTheme() {
     background: none;
     cursor: pointer;
     color: rgba(255, 255, 255, 0.9);
+    line-height: 0;
 }
 
 .theme-toggle__classic path {

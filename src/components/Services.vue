@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useI18n, type Locale } from '@/composables/useI18n';
+import Features from './Features.vue';
 
 interface Service {
   icon: string;
@@ -31,19 +32,7 @@ const services = computed(() => {
         <h2>{{ t('services.title') }}</h2>
         <p>{{ t('services.intro') }}</p>
         <p>{{ t('services.description') }}</p>
-        <div class="services-list">
-          <div 
-            v-for="service in services" 
-            :key="service.title" 
-            class="service-item"
-          >
-            <span class="service-icon"><iconify-icon :icon="service.icon" width="24" height="24"></iconify-icon></span>
-            <div>
-              <h3>{{ service.title }}</h3>
-              <p>{{ service.description }}</p>
-            </div>
-          </div>
-        </div>
+        <Features :features="services" :forceTwoLines="true" />
       </div>
     </div>
   </section>

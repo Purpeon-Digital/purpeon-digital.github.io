@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useI18n, type Locale } from '@/composables/useI18n';
-import HeroFeatures from '@/components/HeroFeatures.vue';
+import Features from '@/components/Features.vue';
 
 
 interface Feature {
@@ -42,6 +42,6 @@ const features = computed(() => {
       </div>
     </div>
 
-    <HeroFeatures :features="features" />
+    <Features :features="features" />
   </section>
 </template>

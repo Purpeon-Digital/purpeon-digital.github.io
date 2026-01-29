@@ -238,4 +238,90 @@ nav {
 .hamburger.open span:nth-child(3) {
   transform: rotate(-45deg) translateY(-9px);
 }
+
+@media (max-width: 768px) {
+    /* Update header height for mobile */
+    header {
+        height: 52px;
+    }
+    
+    nav {
+        padding: 0 1rem;
+        height: auto;
+        min-height: 52px;
+    }
+    
+    .logo {
+        gap: 0.5rem;
+    }
+    
+    .logo-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+        border-radius: 8px;
+    }
+    
+    .logo-text {
+        font-size: 1.1rem;
+    }
+    
+    .logo-accent {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+      .nav-right {
+        position: fixed;
+        top: 52px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: 0;
+        background: var(--header-bg);
+        flex-direction: column;
+        padding: 0 1.5rem;
+        gap: 1.5rem;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav-right.mobile-open {
+        max-height: calc(100vh - 52px);
+        padding: 2rem 1.5rem;
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        gap: 0.25rem;
+        width: 100%;
+    }
+    
+    .nav-links li {
+        width: 100%;
+    }
+    
+    .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        text-align: left;
+    }
+    
+    .nav-controls {
+        padding-left: 0;
+        border-left: none;
+        gap: 0.5rem;
+        width: 100%;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        justify-content: flex-start;
+    }
+}
 </style>

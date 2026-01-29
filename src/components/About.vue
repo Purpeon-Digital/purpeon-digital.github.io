@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useI18n, type Locale } from '@/composables/useI18n';
+import Features from './Features.vue';
 
 interface Value {
   icon: string;
@@ -30,16 +31,7 @@ const values = computed(() => {
         <p>{{ t('about.description1') }}</p>
         <p>{{ t('about.description2') }}</p>
         <p>{{ t('about.description3') }}</p>
-
-        <div class="values-grid">
-          <div v-for="value in values" :key="value.title" class="value-card">
-            <span class="value-icon"><iconify-icon :icon="value.icon" width="24" height="24"></iconify-icon></span>
-            <div>
-              <h3>{{ value.title }}</h3>
-              <p>{{ value.description }}</p>
-            </div>
-          </div>
-        </div>
+        <Features :features="values" :forceTwoLines="true" />
       </div>
       <div class="about-image">
         <img src="/foxglove_photo.jpg" height="640px" width="480px"
@@ -132,43 +124,6 @@ const values = computed(() => {
   grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
   margin-top: 2rem;
-}
-
-.value-card {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  background: var(--about-card-bg);
-  padding: 1.25rem;
-  border-radius: 12px;
-  border: 1px solid var(--about-card-border);
-  transition: all 0.3s ease;
-  align-items: center;
-}
-
-.value-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);
-  border-color: rgba(129, 140, 248, 0.4);
-}
-
-.value-icon {
-  color: var(--about-heading-color);
-  font-size: 1.6rem;
-  flex-shrink: 0;
-}
-
-.value-card h3 {
-  font-size: 1rem;
-  margin-bottom: 0.25rem;
-  color: var(--about-heading-color);
-}
-
-.value-card p {
-  font-size: 0.85rem;
-  opacity: 0.85;
-  margin: 0;
-  line-height: 1.5;
 }
 
 .about-image {
