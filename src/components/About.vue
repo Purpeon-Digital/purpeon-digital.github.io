@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { useI18n, type Locale } from '@/composables/useI18n';
 import Features from './Features.vue';
+import SectionImage from './SectionImage.vue';
 
 interface Value {
   icon: string;
@@ -33,13 +34,20 @@ const values = computed(() => {
         <p>{{ t('about.description3') }}</p>
         <Features :features="values" :forceTwoLines="true" />
       </div>
-      <div class="about-image">
-        <img src="/foxglove_photo.jpg" height="640px" width="480px"
-          alt="Foxglove - Photo by https://unsplash.com/@anniespratt?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText Annie Spratt on https://unsplash.com/photos/a-field-full-of-purple-flowers-on-a-cloudy-day-OuUdVpx1JD8?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText Unsplash" />
-      </div>
+      <SectionImage
+        src="/foxglove_photo.jpg"
+        alt="Foxglove - Photo by Annie Spratt on Unsplash"
+        width="480"
+        height="640"
+        maxWidth="480px"
+        borderRadius="16px"
+        alignment="end"
+        filterPreset="about"
+      />
     </div>
   </section>
 </template>
+
 <style scoped>
 /* About Section */
 .about-section {
@@ -69,6 +77,7 @@ const values = computed(() => {
   position: relative;
   overflow: hidden;
   width: 100%;
+  max-width: none;
   min-height: 100vh;
   height: auto;
   flex-shrink: 0;
@@ -79,6 +88,38 @@ const values = computed(() => {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   transition: background 0.5s ease, color 0.3s ease;
+}
+
+/* Light theme section background */
+:global([data-theme="light"]) .about-section {
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0px,
+      transparent 100px,
+      rgba(192, 132, 250, 0.08) 100px,
+      rgba(196, 139, 253, 0.1) 104px,
+      rgba(199, 146, 255, 0.08) 108px,
+      transparent 108px,
+      transparent 250px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0px,
+      transparent 180px,
+      rgba(168, 85, 247, 0.06) 180px,
+      rgba(168, 85, 247, 0.08) 183px,
+      transparent 183px,
+      transparent 350px
+    ),
+    linear-gradient(
+      160deg,
+      #f5f3ff 0%,
+      #ede9fe 35%,
+      #faf5ff 65%,
+      #f3e5ff 100%
+    );
+  color: #2d2d2d;
 }
 
 .about-content {
@@ -119,92 +160,13 @@ const values = computed(() => {
   font-weight: 500;
 }
 
-.values-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-  margin-top: 2rem;
+/* Light theme text overrides */
+:global([data-theme="light"]) .about-text h2 {
+  color: #6B46C1;
 }
 
-.about-image {
-  position: relative;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.about-image img {
-  width: 100%;
-  max-width: 480px;
-  height: auto;
-  border-radius: 16px;
-  filter: brightness(0.85) contrast(1.15) saturate(1.1);
-  mix-blend-mode: lighten;
-  object-fit: cover;
-}
-
-[data-theme="light"] .about-image img {
-  filter: brightness(1) contrast(1.2) saturate(1.1);
-  mix-blend-mode: normal;
-}
-
-.about-badge {
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
-  background: var(--about-badge-bg);
-  backdrop-filter: blur(10px);
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  border: 1px solid var(--about-badge-border);
-  color: var(--about-text-color);
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.floating-stat {
-  position: absolute;
-  background: var(--about-stat-bg);
-  backdrop-filter: blur(10px);
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-}
-
-.floating-stat:hover {
-  transform: scale(1.05);
-}
-
-.stat-1 {
-  top: 2rem;
-  right: 0;
-}
-
-.stat-2 {
-  top: 50%;
-  left: -1rem;
-  transform: translateY(-50%);
-}
-
-.stat-2:hover {
-  transform: translateY(-50%) scale(1.05);
-}
-
-.stat-number {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--about-stat-color);
-}
-
-.stat-label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--about-stat-color);
-  opacity: 0.8;
+:global([data-theme="light"]) .about-text p {
+  color: #2d2d2d;
 }
 
 @media (max-width: 768px) {
@@ -223,32 +185,6 @@ const values = computed(() => {
 
   .about-text {
     text-align: center;
-  }
-
-  .about-image {
-    display: none;
-  }
-
-  .values-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .floating-stat {
-    padding: 0.75rem 1rem;
-  }
-
-  .stat-1 {
-    top: 1rem;
-    right: 1rem;
-  }
-
-  .stat-2 {
-    left: 1rem;
-  }
-
-  .stat-number {
-    font-size: 1.25rem;
   }
 }
 </style>

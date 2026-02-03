@@ -158,33 +158,33 @@ const props = defineProps<{
 }
 
 /* Light theme overrides */
-[data-theme="light"] .feature-card {
+:global([data-theme="light"]) .feature-card {
   background: rgba(107, 70, 193, 0.15);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(107, 70, 193, 0.3);
 }
 
-[data-theme="light"] .feature-card:hover {
+:global([data-theme="light"]) .feature-card:hover {
   background: rgba(107, 70, 193, 0.25);
   border-color: rgba(107, 70, 193, 0.4);
 }
 
-[data-theme="light"] .feature-icon-wrapper {
+:global([data-theme="light"]) .feature-icon-wrapper {
   background: linear-gradient(135deg, rgba(107, 70, 193, 0.25), rgba(107, 70, 193, 0.15));
   border-color: rgba(107, 70, 193, 0.35);
 }
 
-[data-theme="light"] .feature-card:hover .feature-icon-wrapper {
+:global([data-theme="light"]) .feature-card:hover .feature-icon-wrapper {
   background: linear-gradient(135deg, rgba(107, 70, 193, 0.35), rgba(107, 70, 193, 0.25));
   border-color: rgba(107, 70, 193, 0.5);
 }
 
-[data-theme="light"] .feature-icon-wrapper iconify-icon {
+:global([data-theme="light"]) .feature-icon-wrapper iconify-icon {
   color: #6B46C1;
 }
 
-[data-theme="light"] .feature-card h2,
-[data-theme="light"] .feature-card p {
+:global([data-theme="light"]) .feature-card h2,
+:global([data-theme="light"]) .feature-card p {
   color: #2d2d2d;
 }
 

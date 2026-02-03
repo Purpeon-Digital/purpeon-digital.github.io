@@ -105,6 +105,7 @@ const toggleMap = () => {
   position: relative;
   overflow: hidden;
   width: 100%;
+  max-width: none;
   min-height: calc(100vh - 56px);
   height: auto;
   flex-shrink: 0;
@@ -115,6 +116,46 @@ const toggleMap = () => {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   transition: background 0.5s ease, color 0.3s ease;
+}
+
+/* Light theme section background */
+:global([data-theme="light"]) .contact-section {
+  background:
+    repeating-linear-gradient(
+      150deg,
+      transparent 0px,
+      transparent 90px,
+      rgba(192, 132, 250, 0.08) 90px,
+      rgba(196, 139, 253, 0.1) 94px,
+      rgba(199, 146, 255, 0.08) 98px,
+      transparent 98px,
+      transparent 220px
+    ),
+    repeating-linear-gradient(
+      150deg,
+      transparent 0px,
+      transparent 160px,
+      rgba(168, 85, 247, 0.06) 160px,
+      rgba(168, 85, 247, 0.08) 163px,
+      transparent 163px,
+      transparent 300px
+    ),
+    linear-gradient(
+      -30deg,
+      #f3e5ff 0%,
+      #ede9fe 40%,
+      #f5f3ff 70%,
+      #faf5ff 100%
+    );
+  color: #2d2d2d;
+}
+
+:global([data-theme="light"]) .contact-text h2 {
+  color: #6B46C1;
+}
+
+:global([data-theme="light"]) .contact-text p {
+  color: #2d2d2d;
 }
 
 .image-container {
