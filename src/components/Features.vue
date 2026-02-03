@@ -125,9 +125,29 @@ const props = defineProps<{
 .feature-card h2 {
   font-size: 1.2rem;
   margin: 0;
+  padding-bottom: 0.5rem;
   color: var(--feature-text-color);
   font-weight: 600;
   line-height: 1.3;
+  position: relative;
+}
+
+.feature-card h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(168, 85, 247, 0.5) 0%, rgba(192, 132, 252, 0.4) 100%);
+  border-radius: 1.5px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card:hover h2::after {
+  transform: scaleX(1);
 }
 
 .feature-card p {
@@ -196,6 +216,7 @@ const props = defineProps<{
   .feature-card h2 {
     font-size: 1rem;
     line-height: 1.2;
+    padding-bottom: 0.35rem;
   }
 
   .feature-card p {
