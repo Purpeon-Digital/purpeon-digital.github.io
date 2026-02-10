@@ -133,6 +133,12 @@ const values = computed(() => {
   align-items: center;
 }
 
+.about-content :deep(img) {
+  max-height: min(640px, 60vh);
+  width: auto;
+  object-fit: contain;
+}
+
 .about-text {
   text-align: left;
 }
@@ -169,6 +175,35 @@ const values = computed(() => {
 
 :global([data-theme="light"]) .about-text p {
   color: #2d2d2d;
+}
+
+/* Short viewport height */
+@media (max-height: 800px) {
+  .about-section {
+    padding: 4rem 2rem;
+  }
+
+  .about-content {
+    gap: 2rem;
+  }
+
+  .about-text h2 {
+    margin-bottom: 1rem;
+  }
+
+  .about-text p {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-height: 650px) {
+  .about-section {
+    padding: 3rem 2rem;
+  }
+
+  .about-content {
+    gap: 1.5rem;
+  }
 }
 
 @media (max-width: 768px) {

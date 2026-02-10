@@ -105,6 +105,12 @@ const services = computed(() => {
   align-items: center;
 }
 
+.services-content :deep(img) {
+  max-height: min(750px, 60vh);
+  width: auto;
+  object-fit: contain;
+}
+
 .services-image-wrapper {
   order: 1;
 }
@@ -131,6 +137,35 @@ const services = computed(() => {
   margin-bottom: 1.5rem;
   color: var(--services-text-color);
   opacity: 0.9;
+}
+
+/* Short viewport height */
+@media (max-height: 800px) {
+  .services-section {
+    padding: 4rem 2rem;
+  }
+
+  .services-content {
+    gap: 2rem;
+  }
+
+  .services-text h2 {
+    margin-bottom: 1rem;
+  }
+
+  .services-text p {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-height: 650px) {
+  .services-section {
+    padding: 3rem 2rem;
+  }
+
+  .services-content {
+    gap: 1.5rem;
+  }
 }
 
 /* Tablet and below */

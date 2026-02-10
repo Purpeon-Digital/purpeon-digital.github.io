@@ -2,11 +2,26 @@
 import { computed } from 'vue';
 import { useI18n, type Locale } from '@/composables/useI18n';
 
-interface ContactMethod {
+type ContactMethodType = 'email' | 'phone' | 'location' | 'org';
+
+interface ContactMethodConfig {
+  type: ContactMethodType;
+  icon: string;
+  labelKey: string;
+  value: string;
+  action: 'link' | 'map' | 'external' | 'none';
+  getHref?: (value: string) => string;
+  getExternalUrl?: (value: string) => string;
+}
+
+interface ContactMethodDisplay {
+  type: ContactMethodType;
   icon: string;
   label: string;
   value: string;
+  action: 'link' | 'map' | 'external' | 'none';
   href?: string;
+  externalUrl?: string;
 }
 
 const props = defineProps<{
@@ -19,40 +34,90 @@ const emit = defineEmits<{
 
 const { t, locale } = useI18n(props.locale);
 
-const contactMethods = computed(() => {
+// Structured contact method configuration
+const methodConfigs: ContactMethodConfig[] = [
+  {
+    type: 'email',
+    icon: 'fa6-solid:paper-plane',
+    labelKey: 'contact.email',
+    value: 'kontakt@purpeon.com',
+    action: 'link',
+    getHref: (value) => `mailto:${value}`
+  },
+  {
+    type: 'phone',
+    icon: 'fa6-solid:phone',
+    labelKey: 'contact.phone',
+    value: '+47 959 92 555',
+    action: 'link',
+    getHref: (value) => `tel:${value.replace(/\s/g, '')}`
+  },
+  {
+    type: 'location',
+    icon: 'fa7-solid:map-location-dot',
+    labelKey: 'contact.location',
+    value: 'PEAK Sunnfjord, Hafstadvegen 23-25, 6800 Førde',
+    action: 'map'
+  },
+  {
+    type: 'org',
+    icon: 'fa6-solid:newspaper',
+    labelKey: 'contact.orgNumber',
+    value: '836 295 722',
+    action: 'external',
+    getExternalUrl: (value) => `https://virksomhet.brreg.no/nb/oppslag/enheter/${value.replace(/\s/g, '')}`
+  }
+];
+
+const contactMethods = computed<ContactMethodDisplay[]>(() => {
   // Track locale for reactivity
   const _ = locale.value;
-  return t('contact.methods') as ContactMethod[];
+
+  return methodConfigs.map(config => ({
+    type: config.type,
+    icon: config.icon,
+    label: t(config.labelKey) as string,
+    value: config.value,
+    action: config.action,
+    href: config.getHref?.(config.value),
+    externalUrl: config.getExternalUrl?.(config.value)
+  }));
 });
 
-const handleLocationClick = () => {
-  emit('show-map');
+const isClickable = (method: ContactMethodDisplay): boolean => {
+  return method.action !== 'none';
 };
 
-const handleOrgNumberClick = (e: MouseEvent) => {
-  e.preventDefault();
-  window.open('https://virksomhet.brreg.no/nb/oppslag/enheter/836295722', '_blank');
+const handleClick = (method: ContactMethodDisplay, event: MouseEvent) => {
+  if (method.action === 'map') {
+    event.preventDefault();
+    emit('show-map');
+  } else if (method.action === 'external') {
+    event.preventDefault();
+    if (method.externalUrl) {
+      window.open(method.externalUrl, '_blank');
+    }
+  }
+  // 'link' action uses default href behavior
 };
 </script>
 
 <template>
   <div class="contact-methods">
-    <a 
-      v-for="(method, index) in contactMethods" 
+    <a
+      v-for="method in contactMethods"
       :key="method.label"
       :href="method.href"
       class="contact-card"
-      :class="{ 
-        'no-link': !method.href && method.label !== 'Stad' && method.label !== 'Address' && index !== contactMethods.length - 1,
-        'clickable': method.label === 'Stad' || method.label === 'Address' || index === contactMethods.length - 1
+      :class="{
+        'clickable': isClickable(method),
+        'no-link': !isClickable(method)
       }"
-      @click="
-        method.label === 'Stad' || method.label === 'Address' ? handleLocationClick() :
-        index === contactMethods.length - 1 ? handleOrgNumberClick($event) :
-        null
-      "
+      @click="handleClick(method, $event)"
     >
-      <span class="contact-icon"><iconify-icon :icon="method.icon" width="24" height="24" style="color: #C7719E"></iconify-icon></span>
+      <span class="contact-icon">
+        <iconify-icon :icon="method.icon" width="24" height="24" style="color: #C7719E"></iconify-icon>
+      </span>
       <div>
         <h3>{{ method.label }}</h3>
         <p>{{ method.value }}</p>

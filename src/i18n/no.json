@@ -95,30 +95,10 @@
     "title": "Kontakt oss",
     "lead": "Klar til å transformere bedrifta di med teknologi? Ta kontakt med teamet vårt i dag.",
     "description": "Vi er her for å svare på spørsmåla dine og gi ekspertveiledning om dine IT-initiativ. Anten du treng ein konsultasjon, har eit spesifikt prosjekt i tankane, eller berre vil lære meir om tenestene våre, vil vi gjerne høyre frå deg.",
-    "methods": [
-      {
-        "icon": "fa6-solid:paper-plane",
-        "label": "E-post",
-        "value": "kontakt@purpeon.com",
-        "href": "mailto:kontakt@purpeon.com"
-      },
-      {
-        "icon": "fa6-solid:phone",
-        "label": "Telefon",
-        "value": "+47 959 92 555",
-        "href": "tel:+4795992555"
-      },
-      {
-        "icon": "fa7-solid:map-location-dot",
-        "label": "Stad",
-        "value": "PEAK Sunnfjord, Hafstadvegen 23-25, 6800 Førde"
-      },
-      {
-        "icon": "fa6-solid:newspaper",
-        "label": "Organisasjonsnummer",
-        "value": "836 295 722"
-      }
-    ]
+    "email": "E-post",
+    "phone": "Telefon",
+    "location": "Stad",
+    "orgNumber": "Organisasjonsnummer"
   },
   "language": {
     "select": "Språk",

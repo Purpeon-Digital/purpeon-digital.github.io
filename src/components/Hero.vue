@@ -40,17 +40,19 @@ const features = computed(() => {
           </SectionButton>
         </div>
       </div>
-      <SectionImage
-        src="/hero-render.jpg"
-        alt="Photo by Solen Feyissa on Unsplash"
-        width="400"
-        height="600"
-        maxWidth="400px"
-        alignment="center"
-        filterPreset="hero"
-        :animate-on-scroll="true"
-        animation-direction="right"
-      />
+      <div class="hero-image">
+        <SectionImage
+          src="/hero-render.jpg"
+          alt="Photo by Solen Feyissa on Unsplash"
+          width="400"
+          height="600"
+          maxWidth="400px"
+          alignment="center"
+          filterPreset="hero"
+          :animate-on-scroll="true"
+          animation-direction="right"
+        />
+      </div>
     </div>
 
     <Features :features="features" />
@@ -196,6 +198,51 @@ const features = computed(() => {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+}
+
+.hero-image {
+  max-height: min(600px, 50vh);
+  display: flex;
+  align-items: center;
+}
+
+.hero-image :deep(img) {
+  max-height: min(600px, 50vh);
+  width: auto;
+  object-fit: contain;
+}
+
+/* Short viewport height */
+@media (max-height: 800px) {
+  .hero {
+    padding: 4rem 2rem 2rem;
+  }
+
+  .hero-content {
+    gap: 2rem;
+  }
+
+  .hero-text h1 {
+    margin-bottom: 1rem;
+  }
+
+  .hero-text p {
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-tagline {
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+@media (max-height: 650px) {
+  .hero {
+    padding: 3rem 2rem 1.5rem;
+  }
+
+  .hero-content {
+    gap: 1.5rem;
+  }
 }
 
 /* Tablet and small desktop */

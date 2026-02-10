@@ -65,10 +65,8 @@ const toggleMap = () => {
   flex-direction: column;
   width: 100%;
   max-width: 1400px;
-  height: 100%;
-  gap: 2rem;
   align-items: center;
-  justify-content: center;
+  flex: 1;
 }
 
 .contact-content {
@@ -78,6 +76,13 @@ const toggleMap = () => {
   max-width: 1400px;
   width: 100%;
   align-items: center;
+  margin: auto 0;
+}
+
+.contact-content :deep(img) {
+  max-height: min(720px, 60vh);
+  width: auto;
+  object-fit: contain;
 }
 
 .contact-image {
@@ -263,7 +268,6 @@ const toggleMap = () => {
   align-items: center;
   gap: 1.5rem;
   padding-top: 2rem;
-  margin-top: auto;
 }
 
 .footer-divider {
@@ -308,6 +312,43 @@ const toggleMap = () => {
       rgba(45, 45, 45, 0.2) 50%,
       rgba(45, 45, 45, 0.15) 80%,
       transparent 100%);
+}
+
+/* Short viewport height */
+@media (max-height: 800px) {
+  .contact-section {
+    padding: 4rem 2rem 2rem 2rem;
+  }
+
+  .contact-wrapper {
+    gap: 1.5rem;
+  }
+
+  .contact-content {
+    gap: 2rem;
+  }
+
+  .contact-text h2 {
+    margin-bottom: 1rem;
+  }
+
+  .contact-text p {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-height: 650px) {
+  .contact-section {
+    padding: 3rem 2rem 1.5rem 2rem;
+  }
+
+  .contact-content {
+    gap: 1.5rem;
+  }
+
+  .contact-footer {
+    padding-top: 1rem;
+  }
 }
 
 @media (max-width: 768px) {
