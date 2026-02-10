@@ -57,7 +57,8 @@ const methodConfigs: ContactMethodConfig[] = [
     icon: 'fa7-solid:map-location-dot',
     labelKey: 'contact.location',
     value: 'PEAK Sunnfjord, Hafstadvegen 23-25, 6800 Førde',
-    action: 'map'
+    action: 'map',
+    getHref: () => 'https://maps.app.goo.gl/VPSqRpZNxxvvw8jL6'
   },
   {
     type: 'org',
@@ -73,15 +74,23 @@ const contactMethods = computed<ContactMethodDisplay[]>(() => {
   // Track locale for reactivity
   const _ = locale.value;
 
-  return methodConfigs.map(config => ({
-    type: config.type,
-    icon: config.icon,
-    label: t(config.labelKey) as string,
-    value: config.value,
-    action: config.action,
-    href: config.getHref?.(config.value),
-    externalUrl: config.getExternalUrl?.(config.value)
-  }));
+  return methodConfigs.map(config => {
+    const externalUrl = config.getExternalUrl?.(config.value);
+    const baseHref = config.getHref?.(config.value);
+
+    // For external actions, use externalUrl as href for crawlability
+    const href = config.action === 'external' ? externalUrl : baseHref;
+
+    return {
+      type: config.type,
+      icon: config.icon,
+      label: t(config.labelKey) as string,
+      value: config.value,
+      action: config.action,
+      href,
+      externalUrl
+    };
+  });
 });
 
 const isClickable = (method: ContactMethodDisplay): boolean => {
@@ -92,13 +101,8 @@ const handleClick = (method: ContactMethodDisplay, event: MouseEvent) => {
   if (method.action === 'map') {
     event.preventDefault();
     emit('show-map');
-  } else if (method.action === 'external') {
-    event.preventDefault();
-    if (method.externalUrl) {
-      window.open(method.externalUrl, '_blank');
-    }
   }
-  // 'link' action uses default href behavior
+  // 'external' and 'link' actions use default href behavior with proper attributes
 };
 </script>
 
@@ -108,6 +112,8 @@ const handleClick = (method: ContactMethodDisplay, event: MouseEvent) => {
       v-for="method in contactMethods"
       :key="method.label"
       :href="method.href"
+      :target="method.action === 'external' ? '_blank' : undefined"
+      :rel="method.action === 'external' ? 'noopener noreferrer' : undefined"
       class="contact-card"
       :class="{
         'clickable': isClickable(method),
