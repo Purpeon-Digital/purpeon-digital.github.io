@@ -40,17 +40,17 @@ const features = computed(() => {
           </SectionButton>
         </div>
       </div>
-      <div class="hero-image-wrapper">
-        <SectionImage
-          src="/hero-render.jpg"
-          alt="Photo by Solen Feyissa on Unsplash"
-          width="400"
-          height="600"
-          maxWidth="400px"
-          alignment="center"
-          filterPreset="hero"
-        />
-      </div>
+      <SectionImage
+        src="/hero-render.jpg"
+        alt="Photo by Solen Feyissa on Unsplash"
+        width="400"
+        height="600"
+        maxWidth="400px"
+        alignment="center"
+        filterPreset="hero"
+        :animate-on-scroll="true"
+        animation-direction="right"
+      />
     </div>
 
     <Features :features="features" />
@@ -196,32 +196,6 @@ const features = computed(() => {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-}
-
-/* Hero Image Animation */
-.hero-image-wrapper {
-  animation: heroImageEntrance 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s backwards,
-             heroImageFloat 8s ease-in-out 2.5s infinite;
-}
-
-@keyframes heroImageEntrance {
-  0% {
-    opacity: 0;
-    transform: scale(0.97) translateY(8px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-@keyframes heroImageFloat {
-  0%, 100% {
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    transform: translateY(-5px) scale(1.01);
-  }
 }
 
 /* Tablet and small desktop */
