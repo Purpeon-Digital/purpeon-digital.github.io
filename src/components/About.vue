@@ -43,6 +43,8 @@ const values = computed(() => {
         borderRadius="16px"
         alignment="end"
         filterPreset="about"
+        animateOnScroll
+        animationDirection="right"
       />
     </div>
   </section>

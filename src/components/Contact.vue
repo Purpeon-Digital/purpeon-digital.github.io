@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { useI18n, type Locale } from '@/composables/useI18n';
 import ContactMethods from './ContactMethods.vue';
+import SectionImage from './SectionImage.vue';
 
 const props = defineProps<{
   locale: Locale;
@@ -21,10 +22,18 @@ const toggleMap = () => {
     <div class="contact-wrapper">
       <div class="contact-content">
         <div class="contact-image">
-          <div v-if="!showMap" class="image-container">
-            <img src="/power.jpg" height="720px" width="480px"
-              alt="Photo by https://unsplash.com/@hiepng?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText Hiep Nguyen on https://unsplash.com/photos/silhouette-photography-of-tower-16xJbmtpO6o?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText Unsplash" />
-          </div>
+          <SectionImage
+            v-if="!showMap"
+            src="/power.jpg"
+            alt="Photo by Hiep Nguyen on Unsplash"
+            width="480"
+            height="720"
+            max-width="600px"
+            border-radius="16px"
+            filter-preset="contact"
+            :animate-on-scroll="true"
+            animation-direction="left"
+          />
           <div v-if="showMap" class="map-container">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2984.3563548229395!2d5.85200827803533!3d61.45042227571023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x461633c49568407f%3A0x2ac98f0c3e1aac9d!2sPEAK%20Sunnfjord!5e1!3m2!1sen!2sno!4v1769105218226!5m2!1sen!2sno"
@@ -158,15 +167,6 @@ const toggleMap = () => {
   color: #2d2d2d;
 }
 
-.image-container {
-  width: 100%;
-  max-width: 600px;
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  animation: fadeIn 0.3s ease;
-}
-
 .map-container {
   width: 100%;
   max-width: 600px;
@@ -201,23 +201,6 @@ const toggleMap = () => {
 
 .map-container:hover .map-iframe {
   filter: brightness(1.05);
-}
-
-.contact-image img {
-  width: 100%;
-  max-width: 480px;
-  height: auto;
-  border-radius: 16px;
-  filter: brightness(0.9) contrast(1.1) hue-rotate(-10deg);
-  object-fit: cover;
-}
-
-[data-theme="dark"] .contact-image img {
-  filter: brightness(0.9) contrast(1.1) hue-rotate(-10deg);
-}
-
-[data-theme="light"] .contact-image img {
-  filter: brightness(1) contrast(1.15) hue-rotate(-10deg);
 }
 
 .contact-badge {
