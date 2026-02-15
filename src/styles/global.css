@@ -81,7 +81,7 @@ html {
     --about-streak-3: rgba(79, 70, 229, 0.3);
     --about-streak-4: rgba(139, 92, 246, 0.2);
     --about-streak-5: rgba(167, 139, 250, 0.25);
-    --about-text-color: #ffffff;
+    --about-text-color: #d0d0d0;
     --about-heading-color: #c7d2fe;
     --about-card-bg: rgba(255, 255, 255, 0.08);
     --about-card-border: rgba(255, 255, 255, 0.15);
@@ -100,7 +100,7 @@ html {
     --contact-streak-3: rgba(219, 39, 119, 0.25);
     --contact-streak-4: rgba(251, 146, 60, 0.15);
     --contact-streak-5: rgba(251, 191, 36, 0.2);
-    --contact-text-color: #ffffff;
+    --contact-text-color: #0a0a0a;
     --contact-heading-color: #fce7f3;
     --contact-card-bg: rgba(255, 255, 255, 0.1);
     --contact-card-border: rgba(255, 255, 255, 0.2);

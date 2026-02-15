@@ -26,7 +26,7 @@ const values = computed(() => {
 <template>
   <section id="about" class="about-section">
     <div class="about-content">
-      <div class="about-text">
+      <div class="section-text">
         <h2>{{ t('about.title') }}</h2>
         <p class="lead">{{ t('about.lead') }}</p>
         <p>{{ t('about.description1') }}</p>
@@ -139,42 +139,20 @@ const values = computed(() => {
   object-fit: contain;
 }
 
-.about-text {
-  text-align: left;
-}
-
-.about-text h2 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin-bottom: 1.5rem;
+.section-text h2 {
   color: var(--about-heading-color);
-  line-height: 1.1;
 }
 
-.about-text h2::after {
+.about-section p {
+  color: var(--about-text-color);
+}
+
+.section-text h2::after {
   background: linear-gradient(90deg, #818cf8 0%, #a5b4fc 100%);
 }
 
-.about-text p {
-  font-size: clamp(1rem, 2vw, 1.1rem);
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-  color: var(--about-text-color);
-  opacity: 0.9;
-}
-
-.about-text p.lead {
-  font-size: clamp(1.1rem, 2.2vw, 1.25rem);
-  opacity: 1;
-  font-weight: 500;
-}
-
-/* Light theme text overrides */
-:global([data-theme="light"]) .about-text h2 {
+:global([data-theme="light"]) .section-text h2 {
   color: #6B46C1;
-}
-
-:global([data-theme="light"]) .about-text p {
-  color: #2d2d2d;
 }
 
 /* Short viewport height */
@@ -185,14 +163,6 @@ const values = computed(() => {
 
   .about-content {
     gap: 2rem;
-  }
-
-  .about-text h2 {
-    margin-bottom: 1rem;
-  }
-
-  .about-text p {
-    margin-bottom: 1rem;
   }
 }
 
@@ -218,10 +188,6 @@ const values = computed(() => {
   .about-content {
     grid-template-columns: 1fr;
     gap: 3rem;
-  }
-
-  .about-text {
-    text-align: center;
   }
 }
 </style>

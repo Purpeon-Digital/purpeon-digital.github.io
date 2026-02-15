@@ -38,7 +38,7 @@ const services = computed(() => {
         filterPreset="services"
         class="services-image-wrapper"
       />
-      <div class="services-text">
+      <div class="section-text">
         <h2>{{ t('services.title') }}</h2>
         <p>{{ t('services.intro') }}</p>
         <p>{{ t('services.description') }}</p>
@@ -115,28 +115,12 @@ const services = computed(() => {
   order: 1;
 }
 
-.services-text {
-  text-align: left;
+.section-text {
   order: 2;
 }
 
-.services-text h2 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin-bottom: 1.5rem;
+.section-text h2 {
   color: var(--services-heading-color);
-  line-height: 1.1;
-}
-
-.services-text h2::after {
-  background: linear-gradient(90deg, var(--accent-secondary) 0%, var(--accent-light) 100%);
-}
-
-.services-text p {
-  font-size: clamp(1rem, 2vw, 1.1rem);
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-  color: var(--services-text-color);
-  opacity: 0.9;
 }
 
 /* Short viewport height */
@@ -147,14 +131,6 @@ const services = computed(() => {
 
   .services-content {
     gap: 2rem;
-  }
-
-  .services-text h2 {
-    margin-bottom: 1rem;
-  }
-
-  .services-text p {
-    margin-bottom: 1rem;
   }
 }
 
@@ -180,10 +156,6 @@ const services = computed(() => {
   .services-content {
     grid-template-columns: 1fr;
     gap: 3rem;
-  }
-
-  .services-text {
-    text-align: center;
   }
 }
 </style>

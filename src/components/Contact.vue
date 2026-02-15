@@ -42,7 +42,7 @@ const toggleMap = () => {
             </iframe>
           </div>
         </div>
-        <div class="contact-text">
+        <div class="section-text">
           <h2>{{ t('contact.title') }}</h2>
           <p class="lead">{{ t('contact.lead') }}</p>
           <p>{{ t('contact.description') }}</p>
@@ -60,6 +60,10 @@ const toggleMap = () => {
 </template>
 
 <style scoped>
+.contact-section p {
+  color: var(--contact-text-color);
+}
+
 .contact-wrapper {
   display: flex;
   flex-direction: column;
@@ -164,12 +168,8 @@ const toggleMap = () => {
   color: #2d2d2d;
 }
 
-:global([data-theme="light"]) .contact-text h2 {
+:global([data-theme="light"]) .section-text h2 {
   color: #6B46C1;
-}
-
-:global([data-theme="light"]) .contact-text p {
-  color: #2d2d2d;
 }
 
 .map-container {
@@ -208,57 +208,12 @@ const toggleMap = () => {
   filter: brightness(1.05);
 }
 
-.contact-badge {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-  background: var(--contact-badge-bg);
-  backdrop-filter: blur(10px);
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  border: 1px solid var(--contact-badge-border);
-  color: white;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.contact-text {
-  text-align: left;
-}
-
-.contact-text h2 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin-bottom: 1.5rem;
+.section-text h2 {
   color: var(--contact-heading-color);
-  line-height: 1.1;
 }
 
-.contact-text h2::after {
+.section-text h2::after {
   background: linear-gradient(90deg, #ec4899 0%, #f472b6 100%);
-}
-
-.contact-text p {
-  font-size: clamp(1rem, 2vw, 1.1rem);
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-  color: var(--contact-text-color);
-  opacity: 0.9;
-}
-
-.contact-text p.lead {
-  font-size: clamp(1.1rem, 2.2vw, 1.25rem);
-  opacity: 1;
-  font-weight: 500;
-}
-
-.contact-section .btn-secondary {
-  border-color: rgba(244, 114, 182, 0.4);
-}
-
-.contact-section .btn-secondary:hover {
-  background: rgba(244, 114, 182, 0.15);
-  border-color: rgba(244, 114, 182, 0.6);
 }
 
 .contact-footer {
@@ -298,11 +253,7 @@ const toggleMap = () => {
 }
 
 [data-theme="light"] .footer-text {
-  color: rgba(45, 45, 45, 0.6);
-}
-
-[data-theme="light"] .footer-text:hover {
-  color: rgba(45, 45, 45, 0.8);
+  color: rgba(0, 0, 0);
 }
 
 [data-theme="light"] .footer-divider {
@@ -326,14 +277,6 @@ const toggleMap = () => {
 
   .contact-content {
     gap: 2rem;
-  }
-
-  .contact-text h2 {
-    margin-bottom: 1rem;
-  }
-
-  .contact-text p {
-    margin-bottom: 1rem;
   }
 }
 
