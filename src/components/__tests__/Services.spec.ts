@@ -42,7 +42,7 @@ describe('Services', () => {
       const wrapper = mount(Services, {
         props: { locale: 'no' }
       });
-      const paragraphs = wrapper.findAll('.services-text > p');
+      const paragraphs = wrapper.findAll('.section-text > p');
       expect(paragraphs.length).toBe(2);
     });
 
@@ -71,11 +71,11 @@ describe('Services', () => {
       expect(wrapper.find('.services-content').exists()).toBe(true);
     });
 
-    it('has services-text container', () => {
+    it('has section-text container', () => {
       const wrapper = mount(Services, {
         props: { locale: 'no' }
       });
-      expect(wrapper.find('.services-text').exists()).toBe(true);
+      expect(wrapper.find('.section-text').exists()).toBe(true);
     });
   });
 });
