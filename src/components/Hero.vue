@@ -51,6 +51,7 @@ const features = computed(() => {
           filterPreset="hero"
           :animate-on-scroll="true"
           animation-direction="right"
+          fetchpriority="high"
         />
       </div>
     </div>

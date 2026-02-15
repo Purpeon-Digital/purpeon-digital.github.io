@@ -12,6 +12,7 @@ interface Props {
   animateOnScroll?: boolean;
   animationDirection?: 'left' | 'right';
   filterPreset?: 'hero' | 'services' | 'about' | 'contact';
+  fetchpriority?: 'high' | 'low' | 'auto';
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -20,7 +21,8 @@ const props = withDefaults(defineProps<Props>(), {
   alignment: 'start',
   animateOnScroll: false,
   animationDirection: 'left',
-  filterPreset: 'services'
+  filterPreset: 'services',
+  fetchpriority: 'auto'
 });
 
 const containerRef = ref<HTMLElement | null>(null);
@@ -65,6 +67,7 @@ const containerClasses = computed(() => [
       :width="width"
       :height="height"
       :style="{ maxWidth, borderRadius }"
+      :fetchpriority="props.fetchpriority"
     />
     <slot name="badge" />
   </div>
